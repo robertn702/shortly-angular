@@ -7,11 +7,25 @@ angular.module('shortly.services', [])
       url: '/api/links'
     })
     .then(function (resp) {
-      console.log(JSON.stringify(resp.data));
       dest.links = resp.data;
     });
   };
-  return { getLinks:getLinks };
+
+  var addLink = function(link) {
+    return $http({
+      method: 'POST',
+      url: '/api/links',
+      data: link
+    });
+    // .then(function (resp) {
+
+    // });
+  };
+
+  return {
+    getLinks:getLinks,
+    addLink:addLink
+  };
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
