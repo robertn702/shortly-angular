@@ -17,6 +17,8 @@ angular.module('shortly.services', [])
         method: 'POST',
         url: '/api/links',
         data: { url:link }
+      }).then(function(resp) {
+        console.log(resp);
       });
     } else {
       console.error('Invalid URL.');
