@@ -19,7 +19,8 @@ angular.module('shortly.services', [])
         data: link
       });
     } else {
-      console.log(valid);
+      console.error('Invalid URL.');
+
     }
     // .then(function (resp) {
 
@@ -39,26 +40,34 @@ angular.module('shortly.services', [])
   // that JWT is then stored in localStorage as 'com.shortly'
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
-  var signin = function (user) {
-    return $http({
-      method: 'POST',
-      url: '/api/users/signin',
-      data: user
-    })
-    .then(function (resp) {
-      return resp.data.token;
-    });
+  var signin = function (user, valid) {
+    if (valid) {
+      return $http({
+        method: 'POST',
+        url: '/api/users/signin',
+        data: user
+      })
+      .then(function (resp) {
+        return resp.data.token;
+      });
+    } else {
+      console.error('invalid signin');
+    }
   };
 
-  var signup = function (user) {
-    return $http({
-      method: 'POST',
-      url: '/api/users/signup',
-      data: user
-    })
-    .then(function (resp) {
-      return resp.data.token;
-    });
+  var signup = function (user, valid) {
+    if (valid) {
+      return $http({
+        method: 'POST',
+        url: '/api/users/signup',
+        data: user
+      })
+      .then(function (resp) {
+        return resp.data.token;
+      });
+    } else {
+      console.log('invalid signup');
+    }
   };
 
   var isAuth = function () {
