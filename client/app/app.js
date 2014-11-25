@@ -51,6 +51,16 @@ angular.module('shortly', [
   };
   return attach;
 })
+.directive('shortenedLinks', function() {
+  return {
+    restrict: 'E',
+    template:'<ul></ul>',
+    scope: { links: '=data.links'},
+    link: function(scope, ele, attr) {
+      // put on the ele<li ng-repeat(blah)></li>
+    }
+  }
+})
 .run(function ($rootScope, $location, Auth) {
   // here inside the run phase of angular, our services and controllers
   // have just been registered and our app is ready

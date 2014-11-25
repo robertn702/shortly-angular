@@ -2,6 +2,6 @@
   <!-- Your html here -->
   <input ng-model="search.url" type="text"/>
   <ul>
-    <li ng-repeat="link in data.links | orderBy:link.visits | filter:search">visits: {{ link.visits }} <a href={{"/api/links/"+link.code}}>{{ link.url }} {{ link.code }}</a></li>
+    <li ng-repeat="link in data.links | orderBy:'visits' | filter:search">visits: {{ link.visits }} <a ng-href={{"/api/links/"+link.code}}>{{ link.url }} {{ link.code }}</a></li>
   </ul>
 </div>
