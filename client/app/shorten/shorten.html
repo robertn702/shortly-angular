@@ -1,8 +1,9 @@
 <div ng-controller="ShortenController" id='container'>
 <!-- Your code here -->
-This is shorten.
-  <input type="text" ng-model="link" placeholder="Your link here."/><button ng-click="addLink(link)">Submit</button>
-  <span>{{ link }}</span>
+  This is shorten.
+  <form name="shortenForm">
+    <input type="url" name="input" ng-model="link" placeholder="Your link here."/><button ng-click="addLink(shortenForm.input.$valid,link); link=''">Submit</button>
+  </form>
 </div>
 
 
