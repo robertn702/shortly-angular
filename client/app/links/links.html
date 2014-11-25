@@ -1,7 +1,7 @@
 <div ng-controller='LinksController' id='container'>
   <!-- Your html here -->
-This is links
+  <input ng-model="search.url" type="text"/>
   <ul>
-    <li ng-repeat="link in data.links">{{ link }}</li>
+    <li ng-repeat="link in data.links | orderBy:link.visits | filter:search">{{ link.url }} visits: {{ link.visits }}</li>
   </ul>
 </div>
